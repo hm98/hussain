@@ -27,6 +27,7 @@
  ***************************************************/
 #include <stdio.h>
 #include <stdlib.h>
+#include <fstream>
 
 #include "Timer.h"
 #include "EdgeMap.h"
@@ -38,9 +39,12 @@ void SaveImagePGM(char *filename, char *buffer, int width, int height);
 
 int main(){
   // Here is the test code
+
+  FILE *fp = fopen("outPoints.out", "w");
+
   int width, height;
   unsigned char *srcImg; 
-  char *str = (char *)"lena.pgm";
+  char *str = (char *)"greyscale.pgm";
 
   if (ReadImagePGM(str, (char **)&srcImg, &width, &height) == 0){
     printf("Failed opening <%s>\n", str);
@@ -48,6 +52,8 @@ int main(){
   } //end-if
 
   printf("Working on %dx%d image\n", width, height);
+
+  fprintf(fp, "%d %d\n", width, height);
 
   //-------------------------------- ED Test ------------------------------------
   Timer timer;
@@ -62,11 +68,14 @@ int main(){
 
   // This is how you access the pixels of the edge segments returned by ED
   memset(map->edgeImg, 0, width*height);
+  fprintf(fp, "%d\n", map->noSegments);
   for (int i=0; i<map->noSegments; i++){
+    fprintf(fp, "%d\n", map->segments[i].noPixels);
     for (int j=0; j<map->segments[i].noPixels; j++){
       int r = map->segments[i].pixels[j].r;
       int c = map->segments[i].pixels[j].c;
       
+      fprintf(fp, "%d %d\n", r, c);
       map->edgeImg[r*width+c] = 255;
     } //end-for
   } //end-for
@@ -130,12 +139,15 @@ int main(){
   // This is how you access the pixels of the edge segments returned by EDPF
   memset(map->edgeImg, 0, width*height);
   for (int i=0; i<map->noSegments; i++){
+    // printf("segments %d %d\n", i, map->segments[i].noPixels);
     for (int j=0; j<map->segments[i].noPixels; j++){
       int r = map->segments[i].pixels[j].r;
       int c = map->segments[i].pixels[j].c;
       
+      // printf("(%d, %d) ", r, c);
       map->edgeImg[r*width+c] = 255;
     } //end-for
+    // printf("\n");
   } //end-for
 
   SaveImagePGM("CannySRPF-EdgeMap.pgm", (char *)map->edgeImg, width, height);

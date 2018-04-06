@@ -9,7 +9,7 @@ img = Image.open('image.png')
 img = img.convert('LA')
 
 # To be saved in PGM format
-img = img.convert('RGB')
+img = img.convert('L')
 
 # Saving the greyscale image
 img.save("greyscale.pgm")
