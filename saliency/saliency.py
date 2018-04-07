@@ -33,7 +33,7 @@ def saliency_map(img):
 	return saliency
 
 def largest_contours_rect(saliency):
-	_, contours, hierarchy = cv2.findContours(saliency * 1,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+	contours, hierarchy = cv2.findContours(saliency * 1,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 	contours = sorted(contours, key = cv2.contourArea)
 	return cv2.boundingRect(contours[-1])
 
@@ -72,8 +72,10 @@ if __name__ == "__main__":
 	segmentation = img*mask[:,:,np.newaxis]
 	saliencymap = getsaliencymap(segmentation)
 
-	cv2.imshow("original", img)
-	cv2.imshow("segmentation", segmentation)
-	cv2.imshow("saliency", saliencymap)
+	# cv2.imshow("original", img)
+	# cv2.imshow("segmentation", segmentation)
+	# cv2.imshow("saliency", saliencymap)
+
+	cv2.imwrite("saliency.png", saliencymap)
 
 	cv2.waitKey(-1)
