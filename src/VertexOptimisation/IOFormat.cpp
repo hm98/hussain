@@ -76,9 +76,9 @@ int main()
 	cnt++;
 	cout << cnt << " " << SizeW << " " << 0 << " " << 0 << "\n";
 	cnt++;
-	cout << cnt << " " << 0 << " " << SizeH << " " << 0 << "\n";
+	cout << cnt << " " << 0 << " " << -1 * SizeH << " " << 0 << "\n";
 	cnt++;
-	cout << cnt << " " << SizeW << " " << SizeH << " " << 0 << "\n";
+	cout << cnt << " " << SizeW << " " << -1 * SizeH << " " << 0 << "\n";
 
 	int last = cnt;
 

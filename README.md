@@ -7,16 +7,9 @@ sudo docker pull ubuntu:16.04
 sudo docker run -v /path/to/hussain/:/hussain -it ubuntu:16.04 /bin/bash  
 cd hussain/ 
 chmod +x install.sh   
-chmod +x coloredToBw.py  
-./coloredToBw.py  
-cp greyscale.pgm ./EDTest/  
-cd EDTest/  
-make  
-cp libopencv_* /usr/lib/  
-cp libopencv_* /lib/  
-./EDTest  
-g++ Douglas-Pecker.cpp -o Douglas-Pecker    
-./Douglas-Pecker  
+chmod +x run.py
+./install.sh
+./run.py <IMAGE_NAME(JPG or PNG)>
 
 *Open a new Terminal*  
 docker ps  

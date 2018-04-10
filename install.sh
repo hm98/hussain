@@ -7,6 +7,7 @@ apt install python-pip
 pip install --upgrade pip 
 pip install Pillow 
 apt install python-opencv
+apt install libx11-dev
 chmod +x run.py
 cd lib/ 
 cp libopencv_* /usr/lib/ 
