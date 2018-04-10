@@ -5,13 +5,8 @@ sudo apt install docker.io
 sudo systemctl restart docker.service  
 sudo docker pull ubuntu:16.04  
 sudo docker run -v /path/to/hussain/:/hussain -it ubuntu:16.04 /bin/bash  
-apt update  
-apt install build-essential  
-apt install python  
-apt install python-pip  
-pip install --upgrade pip  
-pip install Pillow  
-cd hussain/  
+cd hussain/ 
+chmod +x install.sh   
 chmod +x coloredToBw.py  
 ./coloredToBw.py  
 cp greyscale.pgm ./EDTest/  
