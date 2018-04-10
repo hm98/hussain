@@ -53,14 +53,16 @@ def backprojection_saliency(img):
 	return mask
 
 def getsaliencymap(image):
+	f= open("saliency.out", "w+")
 	img = image.copy()
 	height, width, _ = img.shape
 	for i in range(0, height):
 		for j in range(0, width):
 			if (img.item(i,j,0) != 0 or img.item(i,j,1) != 0 or img.item(i,j,2) != 0):
+				f.write(str(j) + " " + str(i) + "\n")
 				for k in range (0, 3):
 					img.itemset((i, j, k), 255)
-
+	f.close()
 	return img
 
 if __name__ == "__main__":

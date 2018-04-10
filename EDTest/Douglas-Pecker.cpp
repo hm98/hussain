@@ -8,7 +8,7 @@
 #include <fstream>
 using namespace std;
 
-#define SAMPLING_DENSITY 0.02
+#define SAMPLING_DENSITY 0.006
 
 typedef std::pair<int, int> Point;
 
@@ -22,10 +22,11 @@ vector<Point> temp;
 int main()
 {
   freopen("outPoints.out", "r", stdin);
+  freopen("tPoints.out", "w", stdout);
 
   int width, height;
   scanf("%d %d", &width, &height);
-
+  printf("%d %d\n", width, height);
   unsigned char fin[width*height];
   memset(fin, 0, width*height);
   int x1, y1, x2, y2;
@@ -36,12 +37,15 @@ int main()
 
   vector<Point> pointList;
   vector<Point> pointListOut;
+  vector<Point> selectedPoints;
+  int selectCnt = 0;
   
 
   int nSeg;
   scanf("%d", &nSeg);
+  printf("%d\n", nSeg);
 
-  while(nSeg--)
+  for(int xx = 1; xx<=nSeg; xx++)
   {
     pointList.clear();
     pointListOut.clear();
@@ -55,6 +59,18 @@ int main()
     }
 
     RamerDouglasPeucker(pointList, Li, pointListOut); 
+
+    selectCnt += pointListOut.size();
+
+
+    printf("%d\n", pointListOut.size());
+    for(int i = 0; i<pointListOut.size(); i++)
+    {
+      x1 = pointListOut[i].first;
+      y1 = pointListOut[i].second;
+      selectedPoints.push_back(Point(x1, y1));
+      printf("%d %d\n", x1, y1);
+    }
 
     for(int i = 1; i<pointListOut.size(); i++)
     {
@@ -80,6 +96,13 @@ int main()
   }
 
   SaveImagePGM((char *)"Douglas.pgm", (char *)fin, width, height);
+
+
+  freopen("selectedPoints.out", "w", stdout);
+
+  printf("%d\n", selectCnt);
+  for(int i = 0; i<selectedPoints.size(); i++)
+    printf("%d %d\n", selectedPoints[i].first, selectedPoints[i].second);
 
   return 0; 	
 }
