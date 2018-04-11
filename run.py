@@ -66,11 +66,15 @@ os.chdir("../../src")
 
 os.chdir("./ConstrainedDelaunay")
 os.system("make > /dev/null")
-os.system("./triangle -p ../../outputs/data/triangle > /dev/null")
+os.system("mv triangle triangle.out")
+os.system("mv showme showme.out")
+os.system("./triangle.out -p ../../outputs/data/triangle > /dev/null")
 os.chdir("../")
 print "Triangulation complete"
 
 os.chdir("./ColorPostProcessing")
 os.system("python inputColor.py")
 os.chdir("../")
+print "ColorPostProcessing complete"
+
 print "All done"
