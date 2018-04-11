@@ -21,7 +21,7 @@ float dist(int x1, int y1, int x2, int y2)
     return D;
 }
 
-const int N = 1025;
+const int N = 2000;
 int F[N][N];
 int numx[N*N], denx[N*N], numy[N*N], deny[N*N];
 

@@ -21,7 +21,7 @@ float dist(int x1, int y1, int x2, int y2)
     return D;
 }
 
-const int N = 1025;
+const int N = 2000;
 bool salient[N][N];
 
 int main()
@@ -248,8 +248,8 @@ int main()
     assert(fromSelect_foreground.size() != 0);
     assert(fromSelect_background.size() != 0);
 
-    int toSelect_foreground = 300;
-    int toSelect_background = 100;
+    int toSelect_foreground = 100;
+    int toSelect_background = 50;
 
     std::cout << toSelect_foreground + toSelect_background << "\n";
     while(toSelect_foreground--)
