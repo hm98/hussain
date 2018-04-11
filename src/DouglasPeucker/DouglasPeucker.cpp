@@ -8,7 +8,7 @@
 #include <fstream>
 using namespace std;
 
-#define SAMPLING_DENSITY 0.01
+#define SAMPLING_DENSITY 0.002
 
 typedef std::pair<int, int> Point;
 

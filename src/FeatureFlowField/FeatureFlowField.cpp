@@ -248,8 +248,8 @@ int main()
     assert(fromSelect_foreground.size() != 0);
     assert(fromSelect_background.size() != 0);
 
-    int toSelect_foreground = 100;
-    int toSelect_background = 50;
+    int toSelect_foreground = 300;
+    int toSelect_background = 100;
 
     std::cout << toSelect_foreground + toSelect_background << "\n";
     while(toSelect_foreground--)
