@@ -10,34 +10,40 @@ image.close()
 os.chdir("./src")
 
 os.chdir("./ColoredToGrayscale")
-os.system("python coloredToGrayscale.py")
+os.system("python coloredToGrayscale.py > /dev/null")
 os.chdir("../")
+print "Coverted to Grayscale"
 
 os.chdir("./EdgeFeatureDetection")
-os.system("make")
-os.system("./EDTest.out")
+os.system("make > /dev/null")
+os.system("./EDTest.out > /dev/null")
 os.chdir("../")
+print "Edge Detection complete"
 
 os.chdir("./DouglasPeucker")
 os.system("g++ DouglasPeucker.cpp -o DouglasPeucker.out")
-os.system("./DouglasPeucker.out")
+os.system("./DouglasPeucker.out > /dev/null")
 os.chdir("../")
+print "Douglas Peucker complete"
 
 os.chdir("./SaliencyDetection")
-os.system("python saliency.py")
+os.system("python saliency.py  > /dev/null")
 os.chdir("../")
+print "Saliency detection complete"
 
 os.chdir("./FeatureFlowField")
 os.system("g++ FeatureFlowField.cpp -o FeatureFlowField.out")
-os.system("./FeatureFlowField.out")
+os.system("./FeatureFlowField.out > /dev/null")
 os.chdir("../")
+print "FeatureFlow complete"
 
 os.chdir("./VertexOptimisation")
 os.system("g++ VertexOptimisation.cpp -o VertexOptimisation.out")
 os.system("g++ IOFormat.cpp -o IOFormat.out")
-os.system("./VertexOptimisation.out")
-os.system("./IOFormat.out")
+os.system("./VertexOptimisation.out > /dev/null")
+os.system("./IOFormat.out > /dev/null")
 os.chdir("../")
+print "VertexOptimisation complete"
 
 os.chdir("../outputs/images")
 image = Image.open("DistanceMap.png")
@@ -59,6 +65,6 @@ os.system("mv a.png OptimisedSeeds.png")
 os.chdir("../../src")
 
 os.chdir("./ConstrainedDelaunay")
-os.system("make")
-os.system("./triangle -p ../../outputs/data/triangle")
-os.system("./showme ../../outputs/data/triangle")
+os.system("make > /dev/null")
+os.system("./triangle -p ../../outputs/data/triangle > /dev/null")
+print "Triangulation complete"

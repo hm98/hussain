@@ -87,7 +87,7 @@ int main()
     std::vector< int > SeedVecB;
 
 
-    for(int iter = 0; iter < 10; iter++)
+    for(int iter = 0; iter < 5; iter++)
     {
 
         std::vector< int >( SizeW * SizeH , -1 ).swap(SeedVecA);
