@@ -3,8 +3,10 @@
 apt update  
 apt install build-essential 
 apt install python 
-apt install python-pip 
-pip install --upgrade pip 
+apt install curl 
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
+python get-pip.py 
+rm -rf get-pip.py 
 pip install Pillow 
 apt install python-opencv
 apt install libx11-dev
